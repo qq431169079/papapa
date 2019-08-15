@@ -8,8 +8,10 @@ def create_app(config_name):
     app.config.from_object(app.config)
 
     # 添加蓝本
-    from celery_app.views import celery_bp
-    app.register_blueprint(celery_bp)
+    from celery_app.domainviews import domain_blueprint
+    from celery_app.ipviews import ipscan_blueprint
+    app.register_blueprint(domain_blueprint)
+    app.register_blueprint(ipscan_blueprint)
 
     return app
 
@@ -24,9 +26,11 @@ def make_celery(app):
     return celery
 
 
-client = MongoClient("127.0.0.1", 27017)
+client = MongoClient("127.0.0.1", 27017,connect=False)
 # 指定mongodb数据库
 papapa = client.papapa
 pa_domain=papapa.pa_domain
+pa_sub_domain=papapa.pa_sub_domain
+pa_ip=papapa.pa_ip
 
 
