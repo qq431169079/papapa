@@ -10,8 +10,10 @@ def create_app(config_name):
     # 添加蓝本
     from celery_app.domainviews import domain_blueprint
     from celery_app.ipviews import ipscan_blueprint
+    from celery_app.pluginviews import pluginscan_blueprint
     app.register_blueprint(domain_blueprint)
     app.register_blueprint(ipscan_blueprint)
+    app.register_blueprint(pluginscan_blueprint)
 
     return app
 
@@ -32,5 +34,7 @@ papapa = client.papapa
 pa_domain=papapa.pa_domain
 pa_sub_domain=papapa.pa_sub_domain
 pa_ip=papapa.pa_ip
+pa_plugin=papapa.pa_plugin
+pa_vuln=papapa.pa_vuln
 
 

@@ -19,7 +19,7 @@ def scan_ip():
             for ip_s in item['ip']:
                 ip_list.append(ip_s)
         #调用scan_ip 任务
-        scan_ip_task(ip_list)
+        scan_ip_task.delay(ip_list)
         return {"code":200,"msg":"添加扫描任务成功"}
 
     return {"code":201,"msg":"未找到该域名所对应ip"}

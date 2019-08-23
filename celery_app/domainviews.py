@@ -6,7 +6,7 @@ domain_blueprint = Blueprint("domain", __name__, url_prefix='/domain')
 
 
 @domain_blueprint.route('/adddomain')
-def test():
+def adddomain():
     domain = request.args.get("domain")
     #如果域名已经添加过，就不需要添加了
     if(pa_domain.find_one({"domain":domain})):
@@ -18,6 +18,7 @@ def test():
     get_sub_domain_task.delay(domain)
     result={"code":200,"msg":"add success"}
     return result
+
 
 
 
