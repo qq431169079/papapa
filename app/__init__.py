@@ -36,5 +36,6 @@ pa_sub_domain=papapa.pa_sub_domain
 pa_ip=papapa.pa_ip
 pa_plugin=papapa.pa_plugin
 pa_vuln=papapa.pa_vuln
+pa_taskid=papapa.pa_taskid
 
 

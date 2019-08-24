@@ -13,11 +13,18 @@ def adddomain():
         return {"code":201,"msg":"domain have added"}
     #添加域名
     pa_domain.insert_one({"domain":domain})
-    # pa_domain.update_one({"domain":domain},{"$set":{"a":1}})
+
     #调用Cerely后台 进行子域名批量获取
+    #获取任务id
     get_sub_domain_task.delay(domain)
+
     result={"code":200,"msg":"add success"}
     return result
+
+
+# @domain_blueprint.route('/getstatus')
+# def get_status():
+
 
 
 

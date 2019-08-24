@@ -24,7 +24,7 @@ def check(host):
             for uri in uris:
                 url=target+uri
                 requests.packages.urllib3.disable_warnings()
-                response=requests.get(url,headers=headers,verify=False)
+                response=requests.get(url,headers=headers,verify=False,timeout=7)
                 if response.status_code == 200 and response.headers.get('Content-Type') in ['application/octet-stream','text/markdown']:
                     if len(response.text) and response.text[0] not in ['<','{','[']:
                         output=response.text
@@ -38,6 +38,7 @@ def check(host):
 
     result.append(result_http)
     result.append(result_https)
+    print(result)
 
     #入库
     if len(result)>0:
@@ -47,5 +48,5 @@ def check(host):
     return result
 
 
-print(check("check.newmine.net"))
+# print(check("check.newmine.net"))
 
